@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wealth Distribution</title>
+</head>
+<body>
+    <h1>Wealth Distribution</h1>
+    <fieldset>
+        <legend>Amount:</legend>
+        <input type="number" id="amount" value="0"><br>
+        
+        <label for="wife">Wife:</label>
+        <input type="radio" id="wife" name="recipient" value="0.2"><br>
+        
+        <label for="children-yes">Children:</label>
+        <input type="radio" id="children-yes" name="recipient" value="0.5">Yes
+        <input type="radio" id="children-no" name="recipient" value="0">No<br>
+        
+        <label for="sons">Sons:</label>
+        <input type="number" id="sons" value="0"><br>
+        
+        <label for="daughters">Daughters:</label>
+        <input type="number" id="daughters" value="0"><br>
+        
+        <button onclick="computeWealthDistribution()">Submit</button><br>
+    </fieldset>
+
+    <script>
+        function computeWealthDistribution() {
+            var amount = parseFloat(document.getElementById('amount').value);
+            var wifeShare = document.getElementById('wife').checked ? parseFloat(document.getElementById('wife').value) : 0;
+            var childrenShare = document.getElementById('children-yes').checked ? parseFloat(document.getElementById('children-yes').value) : 0;
+            var sons = parseFloat(document.getElementById('sons').value);
+            var daughters = parseFloat(document.getElementById('daughters').value);
+
+            var totalShare = wifeShare + childrenShare + (sons * 0.2) + (daughters * 0.3) + (amount * 0.2);
+            alert('Wife: ' + (wifeShare * amount) + ', Sons: ' + (sons * 0.2 * amount) + ', Daughters: ' + (daughters * 0.3 * amount) + ', Orphanage: ' + (amount * 0.2) + ', Total: ' + totalShare);
+        }
+    </script>
+</body>
+</html>
